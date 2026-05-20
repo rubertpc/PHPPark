@@ -97,4 +97,4 @@ http://localhost:8888/navapark2/
 
 ## 👨‍💻 Autor
 
-**Rubert** — Ciclo Superior de Desarrollo de Aplicaciones Web
+**Rubert Pacheco**
