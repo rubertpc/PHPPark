@@ -30,21 +30,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - NavaPark2</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Iniciar sesión</h1>
 
-    <?php if ($error): ?>
-        <p style="color:red"><?= $error ?></p>
-    <?php endif; ?>
+<div class="navbar">
+    <a href="login.php" class="logo">Nava<span>Park2</span> 🎢</a>
+    <nav>
+        <a href="login.php">Iniciar sesión</a>
+        <a href="registro.php">Registro</a>
+    </nav>
+</div>
 
-    <form method="POST">
-        <label>Email: <input type="email" name="email" required></label><br><br>
-        <label>Contraseña: <input type="password" name="password" required></label><br><br>
-        <button type="submit">Entrar</button>
-    </form>
+<div class="hero">
+    <h1>¡Hola de nuevo!</h1>
+    <p>Accede a tu cuenta y consulta tus aventuras</p>
+</div>
 
-    <p><a href="registro.php">¿No tienes cuenta? Regístrate</a></p>
+<div class="container">
+    <div class="card">
+        <h2>Iniciar sesión</h2>
+
+        <?php if ($error): ?>
+            <div class="alert alert-error"><?= $error ?></div>
+        <?php endif; ?>
+
+        <form method="POST">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" name="password" placeholder="Tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+
+        <div class="link-text">
+            ¿No tienes cuenta? <a href="registro.php">Regístrate gratis</a>
+        </div>
+    </div>
+</div>
+
+<div class="footer">NavaPark2 &copy; 2026 — Navarredonda de Gredos</div>
+
 </body>
 </html>

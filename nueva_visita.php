@@ -20,13 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("iis", $id_viajero, $id_atraccion, $hora);
 
     if ($stmt->execute()) {
-        $exito = "Viaje registrado correctamente.";
+        $exito = "¡Viaje registrado correctamente!";
     } else {
         $error = "Error al registrar el viaje.";
     }
 }
 
-// Obtener todas las atracciones
 $atracciones = $conn->query("SELECT * FROM atraccion ORDER BY nombre");
 ?>
 
@@ -34,34 +33,62 @@ $atracciones = $conn->query("SELECT * FROM atraccion ORDER BY nombre");
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuevo viaje - NavaPark2</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Registrar nuevo viaje</h1>
 
-    <?php if ($exito): ?>
-        <p style="color:green"><?= $exito ?></p>
-    <?php endif; ?>
+<div class="navbar">
+    <a href="perfil.php" class="logo">Nava<span>Park2</span> 🎢</a>
+    <nav>
+        <a href="perfil.php">Mi perfil</a>
+        <a href="logout.php">Cerrar sesión</a>
+    </nav>
+</div>
 
-    <?php if ($error): ?>
-        <p style="color:red"><?= $error ?></p>
-    <?php endif; ?>
+<div class="hero">
+    <h1>¡A <span>montar!</span></h1>
+    <p>Selecciona una atracción y registra tu aventura</p>
+</div>
 
-    <form method="POST">
-        <label>Atracción:
-            <select name="id_atraccion" required>
-                <?php while ($a = $atracciones->fetch_assoc()): ?>
-                    <option value="<?= $a['id'] ?>"><?= $a['nombre'] ?></option>
-                <?php endwhile; ?>
-            </select>
-        </label><br><br>
+<div class="container">
+    <div class="card">
+        <h2>Registrar nuevo viaje</h2>
 
-        <label>Hora: <input type="datetime-local" name="hora" required></label><br><br>
+        <?php if ($exito): ?>
+            <div class="alert alert-success">
+                <?= $exito ?> <a href="perfil.php">Ver mi perfil</a>
+            </div>
+        <?php endif; ?>
 
-        <button type="submit">Registrar viaje</button>
-    </form>
+        <?php if ($error): ?>
+            <div class="alert alert-error"><?= $error ?></div>
+        <?php endif; ?>
 
-    <br>
-    <a href="perfil.php">Volver a mi perfil</a>
+        <form method="POST">
+            <div class="form-group">
+                <label>Atracción</label>
+                <select name="id_atraccion" required>
+                    <?php while ($a = $atracciones->fetch_assoc()): ?>
+                        <option value="<?= $a['id'] ?>"><?= $a['nombre'] ?> — <?= $a['tematica'] ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Fecha y hora del viaje</label>
+                <input type="datetime-local" name="hora" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar viaje</button>
+        </form>
+
+        <div class="link-text">
+            <a href="perfil.php">← Volver a mi perfil</a>
+        </div>
+    </div>
+</div>
+
+<div class="footer">NavaPark2 &copy; 2026 — Navarredonda de Gredos</div>
+
 </body>
 </html>

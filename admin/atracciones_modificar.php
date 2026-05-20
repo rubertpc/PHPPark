@@ -11,7 +11,6 @@ if (!$id) {
     exit();
 }
 
-// Obtener datos actuales de la atracción
 $sql = "SELECT * FROM atraccion WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
@@ -33,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         $exito = "Atracción modificada correctamente.";
-        // Actualizar datos mostrados
         $atraccion['nombre'] = $nombre;
         $atraccion['tematica'] = $tematica;
     } else {
@@ -46,30 +44,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Modificar atracción - Admin NavaPark2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar atracción - NavaPark2 Admin</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <h1>Modificar atracción</h1>
 
-    <?php if ($exito): ?>
-        <p style="color:green"><?= $exito ?></p>
-    <?php endif; ?>
+<div class="navbar">
+    <a href="control_general.php" class="logo">Nava<span>Park2</span> 🎢 <span style="font-size:0.7rem; background:#f5a623; padding:3px 8px; border-radius:10px; margin-left:8px;">ADMIN</span></a>
+    <nav>
+        <a href="control_general.php">Control general</a>
+        <a href="atracciones_listar.php">Atracciones</a>
+    </nav>
+</div>
 
-    <?php if ($error): ?>
-        <p style="color:red"><?= $error ?></p>
-    <?php endif; ?>
+<div class="hero">
+    <h1>Modificar <span>Atracción</span></h1>
+    <p>Edita los datos de la atracción seleccionada</p>
+</div>
 
-    <form method="POST">
-        <label>Nombre: 
-            <input type="text" name="nombre" value="<?= $atraccion['nombre'] ?>" required>
-        </label><br><br>
-        <label>Temática: 
-            <input type="text" name="tematica" value="<?= $atraccion['tematica'] ?>" required>
-        </label><br><br>
-        <button type="submit">Guardar cambios</button>
-    </form>
+<div class="container">
+    <div class="card">
+        <h2>Editar atracción</h2>
 
-    <br>
-    <a href="atracciones_listar.php">Volver al listado</a>
+        <?php if ($exito): ?>
+            <div class="alert alert-success">
+                <?= $exito ?> <a href="atracciones_listar.php">Ver listado</a>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($error): ?>
+            <div class="alert alert-error"><?= $error ?></div>
+        <?php endif; ?>
+
+        <form method="POST">
+            <div class="form-group">
+                <label>Nombre de la atracción</label>
+                <input type="text" name="nombre" value="<?= $atraccion['nombre'] ?>" required>
+            </div>
+            <div class="form-group">
+                <label>Temática</label>
+                <input type="text" name="tematica" value="<?= $atraccion['tematica'] ?>" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </form>
+
+        <div class="link-text">
+            <a href="atracciones_listar.php">← Volver al listado</a>
+        </div>
+    </div>
+</div>
+
+<div class="footer">NavaPark2 &copy; 2026 — Panel de Administración</div>
+
 </body>
 </html>
