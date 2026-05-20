@@ -27,19 +27,33 @@ El sistema utiliza tres tablas relacionadas entre sí:
 ---
 
 ## 📁 Estructura del proyecto
+
 navapark2/
+
 ├── db.php
+
 ├── registro.php
+
 ├── login.php
+
 ├── perfil.php
+
 ├── nueva_visita.php
+
 ├── logout.php
+
 ├── navapark2.sql
+
 └── admin/
+
 ├── control_general.php
+
 ├── atracciones_listar.php
+
 ├── atracciones_insertar.php
+
 ├── atracciones_modificar.php
+
 └── atracciones_borrar.php
 
 
