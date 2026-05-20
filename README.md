@@ -28,19 +28,22 @@ El sistema utiliza tres tablas relacionadas entre sí:
 
 ## 📁 Estructura del proyecto
 navapark2/
-├── db.php                          # Conexión a la base de datos
-├── registro.php                    # Registro de nuevos viajeros
-├── login.php                       # Inicio de sesión
-├── perfil.php                      # Perfil del viajero con historial de viajes
-├── nueva_visita.php                # Registrar un nuevo viaje
-├── logout.php                      # Cerrar sesión
-├── navapark2.sql                   # Script de creación de la base de datos
+├── db.php
+├── registro.php
+├── login.php
+├── perfil.php
+├── nueva_visita.php
+├── logout.php
+├── navapark2.sql
 └── admin/
-├── control_general.php         # Vista general del parque
-├── atracciones_listar.php      # Listado de atracciones
-├── atracciones_insertar.php    # Añadir atracción
-├── atracciones_modificar.php   # Modificar atracción
-└── atracciones_borrar.php      # Borrar atracción
+├── control_general.php
+├── atracciones_listar.php
+├── atracciones_insertar.php
+├── atracciones_modificar.php
+└── atracciones_borrar.php
+
+
+
 ---
 
 ## 👤 Vista Cliente
