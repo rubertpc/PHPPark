@@ -1,0 +1,26 @@
+CREATE DATABASE IF NOT EXISTS navapark2 CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE navapark2;
+
+CREATE TABLE viajero (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    edad INT NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE atraccion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    tematica VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE viaje (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_viajero INT NOT NULL,
+    id_atraccion INT NOT NULL,
+    hora DATETIME NOT NULL,
+    FOREIGN KEY (id_viajero) REFERENCES viajero(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_atraccion) REFERENCES atraccion(id) ON DELETE CASCADE
+);
