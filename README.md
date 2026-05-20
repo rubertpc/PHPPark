@@ -27,7 +27,9 @@ El sistema utiliza tres tablas relacionadas entre sí:
 ---
 
 ## 📁 Estructura del proyecto
-
+'''
+'''
+'''
 navapark2/
 
 ├── db.php
@@ -56,7 +58,7 @@ navapark2/
 
 └── atracciones_borrar.php
 
-
+'''
 
 ---
 
