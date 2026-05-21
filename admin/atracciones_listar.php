@@ -1,4 +1,5 @@
 <?php
+require 'auth_admin.php';
 require '../db.php';
 
 $atracciones = $conn->query("SELECT * FROM atraccion ORDER BY nombre");
@@ -19,6 +20,7 @@ $atracciones = $conn->query("SELECT * FROM atraccion ORDER BY nombre");
     <nav>
         <a href="control_general.php">Control general</a>
         <a href="atracciones_listar.php">Atracciones</a>
+        <a href="../logout.php">Cerrar sesión</a>
     </nav>
 </div>
 

@@ -18,7 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($viajero && password_verify($password, $viajero['password'])) {
         $_SESSION['id_viajero'] = $viajero['id'];
         $_SESSION['nombre'] = $viajero['nombre'];
-        header("Location: perfil.php");
+        $_SESSION['rol'] = $viajero['rol'];
+
+        if ($viajero['rol'] === 'admin') {
+            header("Location: admin/control_general.php");
+        } else {
+            header("Location: perfil.php");
+        }
+        
         exit();
     } else {
         $error = "Email o contraseña incorrectos.";

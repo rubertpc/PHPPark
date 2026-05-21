@@ -1,4 +1,5 @@
 <?php
+require 'auth_admin.php';
 require '../db.php';
 
 $sql = "SELECT a.nombre AS atraccion, v.hora, vj.edad 
@@ -25,6 +26,7 @@ $resultado = $conn->query($sql);
     <nav>
         <a href="control_general.php">Control general</a>
         <a href="atracciones_listar.php">Atracciones</a>
+        <a href="../logout.php">Cerrar sesión</a>
     </nav>
 </div>
 
